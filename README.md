@@ -82,7 +82,3 @@ service cloud.firestore {
 ---
 
 For full integration with the mobile booking app, connect this panel to the same Firebase backend.
-
----
-
-Need a zipped version or Firebase hosting guide? Just ask!
