@@ -1,0 +1,41 @@
+// firestore.rules
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 🔐 Config (admin only)
+    match /config/{doc} {
+      allow read, write: if request.auth.token.admin == true;
+    }
+
+    // 🚌 Buses listing and districts (read-only for users)
+    match /buses/{busId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth.token.admin == true;
+    }
+
+    // 🪑 Seats (booking system)
+    match /buses/{busId}/seats/{seatId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null; // locking/booking
+    }
+
+    // 👥 Users (basic info)
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // 📄 Bookings per user
+    match /bookings/{bookingId} {
+      allow create: if request.auth != null;
+      allow read, delete: if request.auth != null && request.resource.data.userId == request.auth.uid;
+    }
+
+    // 📊 Admin dashboard
+    match /admin/{docId} {
+      allow read, write: if request.auth.token.admin == true;
+    }
+
+  }
+}
