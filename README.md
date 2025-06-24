@@ -58,10 +58,50 @@ A sample PDF generator is included. Integrate with real booking data for product
 
 ## 📁 Folder Structure
 ```
-web_admin_panel/
+📁 /bus_booking_app/
+├── android/
+├── ios/
 ├── lib/
 │   ├── main.dart
+│   ├── app.dart
+│   ├── models/
+│   │   ├── bus.dart
+│   │   ├── seat.dart
+│   ├── services/
+│   │   ├── auth_service.dart
+│   │   ├── gps_service.dart
+│   │   ├── firestore_service.dart
+│   ├── providers/
+│   │   ├── auth_provider.dart
+│   │   ├── bus_provider.dart
+│   │   ├── seat_provider.dart
+│   ├── screens/
+│   │   ├── sign_in_screen.dart
+│   │   ├── sign_up_screen.dart
+│   │   ├── select_district_screen.dart
+│   │   ├── bus_list_screen.dart
+│   │   ├── seat_booking_screen.dart
+│   │   ├── map_screen.dart
+│   │   ├── upload_csv_screen.dart
+│   │   ├── pdf_confirmation_screen.dart
+│   ├── widgets/
+│   │   ├── seat_grid.dart
+│   │   ├── bus_card.dart
+│   │   ├── auth_form.dart
+│   │   ├── pdf_viewer.dart
+│   ├── constants/
+│   │   ├── app_styles.dart
+│   │   ├── app_routes.dart
+│   ├── utils/
+│   │   ├── file_utils.dart
+│   │   ├── map_utils.dart
+├── functions/
+│   ├── index.js        # Cloud Functions (Node.js for CSV/PDF parsing)
+│   ├── package.json
+├── web_admin_panel/    # (Optional: Flutter Web dashboard)
 ├── pubspec.yaml
+├── README.md
+
 ```
 
 ## 🔒 Firestore Rules Example
